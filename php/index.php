@@ -90,8 +90,29 @@ function show_flash_message($key) {
 
         <?php if(isset($_COOKIE["user_id"])) { ?>
             <h2>Welcome to the worst auth app, dear "<?=$user["username"]?>!"</h2>
+            <?php 
+
+                echo "<table>";
+                echo "<tr>";
+                echo "<th>ID</th>";
+                echo "<th>Name</th>";
+                echo "<th>Password</th>";
+                echo "</tr>";
+
+                $users = $db->query('SELECT * FROM users')->fetchAll();
+                foreach($users as $user) {
+                    echo "<tr>";
+                    echo "<td>".$user['id']."</td>";
+                    echo "<td>".$user['username']."</td>";
+                    echo "<td>".$user['password']."</td>";
+                    echo "</tr>";
+                }        
+
+                echo "</table>"; ?>
             <a href="<?=$link?>?logout">Logout</a>
         <?php } else { header("Location:".$link."login.php"); } ?>
         </div>
+
+
 </body>
 </html>
