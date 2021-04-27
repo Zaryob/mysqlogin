@@ -1,5 +1,6 @@
 <?php ob_start(); session_start();
    include('config.php');
+
 try {
 	$db = new PDO("mysql:host=".$host.";dbname=".$database.";charset=utf8", $username, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -12,7 +13,6 @@ if(!empty($_COOKIE["user_id"])) {
 }
 
 ?>
-
 
 <?php
 
@@ -82,14 +82,18 @@ function show_flash_message($key) {
 
 <!DOCTYPE html>
 <html>
+<head>
+<title>The Database Login App</title>
+<link rel="stylesheet" href="css/main.css" type="text/css"></link>
+</head>
 <body>
         <div align="center">
-                <h1 style="color:red;">The Worst Auth App</h1>
+                <h1 style="color:red;">The Database Login App</h1>
 
                 <?=show_flash_message("message")?>
 
         <?php if(isset($_COOKIE["user_id"])) { ?>
-            <h2>Welcome to the worst auth app, dear "<?=$user["username"]?>!"</h2>
+            <h2>Welcome to the database auth app, dear "<?=$user["username"]?>!"</h2>
             <?php 
 
                 echo "<table>";

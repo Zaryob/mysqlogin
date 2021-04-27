@@ -3,7 +3,16 @@
 if(isset($_COOKIE["user_id"])) {
     header("Location:".$link);
 } else { ?>
-    <h2>Sign Up:</h2>
+<html>
+<head>
+<title>Register Page</title>
+<link rel="stylesheet" href="css/main.css" type="text/css"></link>
+</head>
+<body>
+    <div class="signlanding">
+    <h1>Sign Up</h1>
+    <h3>Please fill your credentials to sign up.</h3>
+
     <form method="POST" action="<?=$link?>">
         <input type="hidden" name="method" value="register" />
 
@@ -17,21 +26,26 @@ if(isset($_COOKIE["user_id"])) {
             echo "Username already used!";
         }
         ?><br>
-        <label for="username">Username:</label>
+        <label for="username">Username</label>
+        <br>
         <input name="username" id="username" required></input>
 
         <br><br>
 
-        <label for="password">Password:</label>
+        <label for="password">Password</label>
+        <br>
         <input name="password" id="password" type="password"  required></input>
+        <br><br>
+        <label for="password_again">Confirm Password</label>
         <br>
-        <label for="password_again">Password (again):</label>
         <input name="password_again" id="password_again" type="password"  required></input>
-
-        <br>
-        <br>
+        <br><br>
         <button type="submit">Sign Up</button>
+        <br>
         <br>
         Already have an account? <a href="<?=$link?>login.php">Login here</a>.
     </form>
+    <div>
+</body>
+</html>
 <?php } ?>

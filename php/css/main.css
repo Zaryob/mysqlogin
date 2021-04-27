@@ -1,0 +1,111 @@
+/* Headers */
+h1 { 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+  }
+h3 { 
+    color: rgb(22, 22, 22);
+    font-size: 1em;
+    font-weight: inherit;
+    margin-top: 0.33em;
+    margin-bottom: 0.33em;
+    margin-left: 0;
+    margin-right: 0;
+}
+label{
+    font-size: 0.9em;
+    font-weight: bold;
+}
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+/* table in main page */
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 10px;
+}
+th {
+    text-align: left;
+}
+
+/* unvisited link */
+a:link {
+    color: blue;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: mediumaquamarine;
+}
+
+/* selected link */
+a:active {
+    color: aqua;
+} 
+
+/* buttons */
+button {
+    display: inline-block;
+    padding: 15px 25px;
+    /* font-size: 24px; */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #007bac;
+    border: none;
+    border-radius: 8px;
+    /* box-shadow: 0 10px #999;*/
+}
+
+/*
+.button:hover {background-color: #007bac}
+
+.button:active {
+    background-color: #007bac;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+*/
+
+
+.signlanding {
+    width: 30vw;
+    margin-top: 24px;
+    align-self: center;
+    box-sizing: content-box;
+    display: block;
+    float: none;
+    line-height: 21px;
+    z-index: auto;
+    background-color: lightblue;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    /* Center vertically and horizontally */
+    position: absolute;
+    top: 20vh; 
+    left: 40vw;
+    margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */
+}
