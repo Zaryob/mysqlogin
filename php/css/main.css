@@ -130,3 +130,24 @@ a:active {
     left: 40vw;
     margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */
 }
+
+.welcomelanding {
+    width: 80vw;
+    height: 80vh;
+    align-self: center;
+    box-sizing: content-box;
+    display: block;
+    float: none;
+    line-height: 21px;
+    z-index: auto;
+    background-color: rgb(235, 235, 235);
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    /* Center vertically and horizontally */
+    position: absolute;
+    left: 10vw;
+    top: 10vh;
+    margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */
+}

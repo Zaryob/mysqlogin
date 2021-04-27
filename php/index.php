@@ -87,13 +87,16 @@ function show_flash_message($key) {
 <link rel="stylesheet" href="css/main.css" type="text/css"></link>
 </head>
 <body>
+    <div class="welcomelanding">
+
         <div align="center">
-                <h1 style="color:red;">The Database Login App</h1>
+                <h1 style="color:blue;">The Database Login App</h1>
 
                 <?=show_flash_message("message")?>
 
         <?php if(isset($_COOKIE["user_id"])) { ?>
-            <h2>Welcome to the database auth app, dear "<?=$user["username"]?>!"</h2>
+            <h2 style="font-weight: normal;">Welcome to the database auth app, dear "<?=$user["username"]?>!"</h2>
+            <h4>Table of users</h4>
             <?php 
 
                 echo "<table>";
@@ -113,9 +116,11 @@ function show_flash_message($key) {
                 }        
 
                 echo "</table>"; ?>
-            <a href="<?=$link?>?logout">Logout</a>
+            <br>
+            If you wanna exit you can <a href="<?=$link?>?logout">Logout</a>
         <?php } else { header("Location:".$link."login.php"); } ?>
         </div>
+    </div>
 
 
 </body>
