@@ -35,7 +35,7 @@ if (isset($_COOKIE["user_id"])) {
 
         <br>
         <br>
-        <button type="submit">Sign in</button>
+        <button type="submit" class="button_blue" >Sign in</button>
         <br>
         <br>
 

@@ -40,7 +40,12 @@ if(isset($_COOKIE["user_id"])) {
         <br>
         <input name="password_again" id="password_again" type="password"  required></input>
         <br><br>
-        <button type="submit">Sign Up</button>
+        <button class="button_blue" type="submit">Sign Up</button>
+        <button class="button_white" onclick="
+        document.getElementById('password').value = '';
+        document.getElementById('password_again').value = '';
+        document.getElementById('username').value = '';
+        " title="Clear">Reset</button></input>
         <br>
         <br>
         Already have an account? <a href="<?=$link?>login.php">Login here</a>.
