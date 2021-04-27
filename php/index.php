@@ -1,6 +1,7 @@
 <?php ob_start(); session_start();
+   include('config.php');
 try {
-    $db = new PDO("mysql:host=localhost;dbname=users;charset=utf8", "admin", "password", array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+	$db = new PDO("mysql:host=".$host.";dbname=".$database.";charset=utf8", $username, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die($e->getMessage());
@@ -19,11 +20,15 @@ if(isset($_GET["logout"])) {
     session_destroy();
     setcookie("user_id", NULL);
 
-    header("Location: http://localhost");
+    header("Location:".$link);
 }
 
 if($_POST) {
     if($_POST["method"] == "register") {
+        if($_POST["password"] !== $_POST["password_again"]) {
+            header("Location:".$link."register.php?message=retype_password");
+            exit();
+        }
         $query = $db->query("SELECT * FROM users WHERE username = '{$_POST["username"]}'")->fetch(PDO::FETCH_ASSOC);
         if(!$query) {
             $sql = $db->prepare("INSERT INTO users (username, password)
@@ -33,9 +38,11 @@ if($_POST) {
             $sql->bindParam('password', $_POST["password"]);
             $sql->execute();
 
-            create_flash_message("message", "User created succesfuly!");
+            header("Location:".$link."register.php?message=user_created");
+            exit();
         } else {
-            create_flash_message("message", "User already created!");
+            header("Location:".$link."register.php?message=user_couldnt_created");
+            exit();
         }
 
     } elseif($_POST["method"] == "login") {
@@ -47,13 +54,14 @@ if($_POST) {
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
         if($_POST["password"] !== $result["password"]) {
-            create_flash_message("message", "Please, enter correct password!");
+            header("Location:".$link."login.php?message=password");
+            exit();
         } else {
             setcookie("user_id", $result["id"]);
             create_flash_message("message", "Password is true.");
         }
 
-        header("Refresh:0");
+        header("Location:".$link);
     } else {
         create_flash_message("message", "Select true method!");
     }
@@ -75,60 +83,15 @@ function show_flash_message($key) {
 <!DOCTYPE html>
 <html>
 <body>
-	<div align="center">
-		<h1 style="color:red;">The Worst Auth App</h1>
+        <div align="center">
+                <h1 style="color:red;">The Worst Auth App</h1>
 
-		<?=show_flash_message("message")?>
+                <?=show_flash_message("message")?>
 
         <?php if(isset($_COOKIE["user_id"])) { ?>
-            <h2>Welcome to the worst auth app, <?=$user["username"]?>!</h2>
-            <a href="http://68.183.106.165?logout">Çıkış Yap</a>
-        <?php } else { ?>
-		<h2>Login:</h2>
- 		<form method="POST" action="http://localhost">
-			<input type="hidden" name="method" value="login" />
-
- 			<label for="username">Username:</label>
- 			<input name="username" id="username" required></input>
-
- 			<br><br>
-
-			<label for="password">Password:</label>
- 			<input name="password" id="password" required></input>
-
-			<br>
-			<br>
-			<button type="submit">Sumbit</button>
-		</form>
-
-		<hr>
-
-        <?php } ?>
-	</div>
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html>
-<body>
-	<div align="center">
-        <h2>Register:</h2>
- 		<form method="POST" action="http://localhost">
-			<input type="hidden" name="method" value="register" />
-
- 			<label for="username">Username:</label>
- 			<input name="username" id="username" required></input>
-
- 			<br><br>
-
-			<label for="password">Password:</label>
- 			<input name="password" id="password" required></input>
-
-			<br>
-			<br>
-			<button type="submit">Submit</button>
-		</form>
+            <h2>Welcome to the worst auth app, dear "<?=$user["username"]?>!"</h2>
+            <a href="<?=$link?>?logout">Logout</a>
+        <?php } else { header("Location:".$link."login.php"); } ?>
         </div>
-    </body>
+</body>
 </html>
