@@ -1,0 +1,3 @@
+[submodule "mysql1"]
+	path = dart/third_party/mysql1
+	url = https://github.com/Zaryob/mysql1_dart
