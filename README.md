@@ -11,6 +11,11 @@ I use my own server to develop this project. You can preview it on [with clickin
 I developed it onto phpstorm, served using LAMP and phpmyadmin.
 If you dont know how to install LAMP server look at my post about it on dev.to [from here](https://dev.to/zaryob/lamp-server-kurulumu-3na2)
 
+Lets import database 
+
+### Importing Database
+
+#### phpmyadmin
 Put all files with `*.php` extension and `css/` directory on `/var/www/html` directory.
 
 Open the phpadmin.
@@ -30,6 +35,26 @@ Scroll down and click to go.
 ![step7](screenshots/Screenshot_20210502_130217.png) 
 It will open a page and this page give lots of successfull output.
 ![step8](screenshots/Screenshot_20210502_130227.png)
+
+
+#### From manual
+
+If you dont have any information about the phpmyadmin you can import it manually. Firstly create a database into your mysql. Lets open mysql from console:
+
+```
+mysql
+```
+Then create a database named `users` from here.
+```
+CREATE DATABASE users;
+```
+Then say exit to mysql shell and  import file from console
+
+```
+mysql -u username -p users < sql/auth.sql
+```
+
+### Installing Files
 
 If this step is done, open `/var/www/html` directory and fix your `config.php` file.
 
