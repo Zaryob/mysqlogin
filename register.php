@@ -57,7 +57,7 @@ if(isset($_COOKIE["user_id"])) {
         document.getElementById('password').value = '';
         document.getElementById('password_again').value = '';
         document.getElementById('username').value = '';
-        " title="Clear">Reset</button></input>
+        " title="Clear">Reset</button>
         <br>
         <br>
         Already have an account? <a href="<?=$link?>login.php">Login here</a>.
