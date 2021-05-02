@@ -104,6 +104,9 @@ function show_flash_message($key) {
                 echo "<th>ID</th>";
                 echo "<th>Name</th>";
                 echo "<th>Password</th>";
+                echo "<th>Email</th>";
+                echo "<th>Phone Number</th>";
+                echo "<th>Address</th>";
                 echo "</tr>";
 
                 $users = $db->query('SELECT * FROM users')->fetchAll();
@@ -112,10 +115,14 @@ function show_flash_message($key) {
                     echo "<td>".$user['id']."</td>";
                     echo "<td>".$user['username']."</td>";
                     echo "<td>".$user['password']."</td>";
+                    echo "<td>".$user['email']."</td>";
+                    echo "<td>".$user['phone_number']."</td>";
+                    echo "<td>".$user['address']."</td>";
                     echo "</tr>";
                 }        
 
                 echo "</table>"; ?>
+            <br>
             <br>
             If you wanna exit you can <a href="<?=$link?>?logout">Logout</a>
         <?php } else { header("Location:".$link."login.php"); } ?>
