@@ -114,17 +114,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255),
+  `address` varchar(255),
+  `phone_number` varchar(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'suleyman', 'poyraz'),
-(2, 'deneme', '827ccb0eea8a706c4c34a16891f84e7b'),
-(3, 'ray', 'malifalitiko');
+INSERT INTO `users` (`id`, `username`, `password`, `email`,`address`, `phone_number`) VALUES
+(1, 'suleyman', 'poyraz', 'zaryob.dev@gmail.com', 'Somewhere around the world', '110510181'),
+(2, 'deneme', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, NULL),
+(3, 'ray', 'malifalitiko', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
