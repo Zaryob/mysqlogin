@@ -71,7 +71,7 @@ if($_POST) {
 
         header("Location:".$link);
     } elseif ($_POST["method"] == "settings") {
-        $query = $db->prepare("UPDATE users SET username = :username, password = :password, email = :email, address = :address,  phone_number=:phone_number WHERE id = 1;");
+        $query = $db->prepare("UPDATE users SET username = :username, password = :password, email = :email, address = :address,  phone_number=:phone_number WHERE id = '{$_COOKIE["user_id"]}';");
         $query->bindParam('username', $_POST["username"]);
         $query->bindParam('password', $_POST["password"]);
         $query->bindParam('address', $_POST["address"]);
@@ -83,6 +83,11 @@ if($_POST) {
         //exit();
         //$result = $query->fetch(PDO::FETCH_ASSOC);
         //error_log($result);
+        setcookie("user_name", $_POST["username"]);
+        setcookie("passwd", $_POST["password"]);
+        setcookie("address", $_POST["address"]);
+        setcookie("email", $_POST["email"]);
+        setcookie("phone_number", $_POST["phone_number"]);
         header("Location:".$link."settings.php?message=successful");
         exit();
     } else {

@@ -131,7 +131,11 @@ COMMIT;
 
 # DML Codes
 
-This shows all users with given `user_id`
+This queries used in PHP codes. Also you can found it on index.php file.
+
+
+
+This shows all users with given `$user_id`
 ```sql
 SELECT * FROM users WHERE id = $user_id
 ```
@@ -146,9 +150,15 @@ This shows all user rows.
 SELECT * FROM users
 ```
 
-This creates new user with given `password` and `username` variables.
+This creates new user with given `password` and `username` variables. ":username" and ":password" are php queries.
 
 ```sql
 INSERT INTO users (username, password)
             VALUES (:username, :password)
-            ```
+```
+
+This is changes user credentials where `user_id` is same with given parameter.":username", ":password", ":email",":address" and "phone_number" are php queries. '{$_COOKIE["user_id"]}' is also cookie for php.
+
+```sql
+UPDATE users SET username = :username, password = :password, email = :email, address = :address,  phone_number=:phone_number WHERE id = '{$_COOKIE["user_id"]}';
+```

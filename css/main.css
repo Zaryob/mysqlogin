@@ -133,7 +133,8 @@ a:active {
 
 .welcomelanding {
     width: 80vw;
-    height: 80vh;
+    margin-top: 24px;
+   /* height: 80vh;*/
     align-self: center;
     box-sizing: content-box;
     display: block;

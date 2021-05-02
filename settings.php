@@ -1,6 +1,6 @@
 <?php 
-    include('config.php');
-?>
+   include('config.php');
+if(isset($_COOKIE["user_id"])) { ?>
 <html>
 <head>
 <title>Settings Page</title>
@@ -69,4 +69,7 @@
     </div>
 </body>
 </html>
-<?php ?>
+<?php 
+} else { header("Location:".$link); }
+
+?>
