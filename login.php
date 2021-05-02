@@ -17,11 +17,15 @@ if (isset($_COOKIE["user_id"])) {
 
     <form method="POST" action="<?=$link?>">
         <input type="hidden" name="method" value="login"/>
-        <?php
 
-            if(@$_GET["message"] == "password") {
-                echo "Please enter correct password!";
-            }
+        <?php
+        if(@$_GET["message"] == "password") { ?>
+            <div class="fail">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <?php echo "Please enter correct password!"; ?>
+            </div>        
+        <?php 
+        }
         ?><br>
         <label for="username">Username</label>
         <br>

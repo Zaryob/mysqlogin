@@ -18,12 +18,24 @@ if(isset($_COOKIE["user_id"])) {
 
         <?php
 
-        if(@$_GET["message"] == "retype_password") {
-            echo "Please enter same password!";
-        } elseif(@$_GET["message"] == "user_created") {
-            echo "User created succesfuly!";
-        } elseif(@$_GET["message"] == "user_couldnt_created") {
-            echo "Username already used!";
+        if(@$_GET["message"] == "retype_password") { ?>
+            <div class="fail">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <?php echo "Please enter same password!";?>
+            </div> 
+        <?php
+        } elseif(@$_GET["message"] == "user_created") {?>
+            <div class="successful">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <?php echo "User created succesfuly!";?>
+            </div> 
+        <?php
+        }  elseif(@$_GET["message"] == "user_couldnt_created") {?>
+            <div class="fail">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <?php echo "Username already used!";?>
+            </div>        
+        <?php 
         }
         ?><br>
         <label for="username">Username</label>

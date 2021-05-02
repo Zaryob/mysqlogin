@@ -12,7 +12,7 @@ h1 {
     margin-right: 0;
     font-weight: bold;
     color: rgb(51, 51, 51);
-  }
+}
 h3 { 
     color: rgb(22, 22, 22);
     font-size: 1em;
@@ -31,7 +31,7 @@ input {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-  }
+}
 
 
 /* table in main page */
@@ -151,3 +151,34 @@ a:active {
     top: 10vh;
     margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */
 }
+
+/* The alert message box */
+.fail {
+    padding: 20px;
+    background-color: red; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+/* The alert message box */
+.successful {
+    padding: 20px;
+    background-color: green; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+} 

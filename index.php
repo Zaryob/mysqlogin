@@ -19,10 +19,13 @@ if(!empty($_COOKIE["user_id"])) {
 if(isset($_GET["logout"])) {
     session_destroy();
     setcookie("user_id", NULL);
-
+    setcookie("user_name", NULL);
+    setcookie("passwd", NULL);
+    setcookie("address", NULL);
+    setcookie("email", NULL);
+    setcookie("phone_number", NULL);
     header("Location:".$link);
 }
-
 if($_POST) {
     if($_POST["method"] == "register") {
         if($_POST["password"] !== $_POST["password_again"]) {
@@ -58,10 +61,30 @@ if($_POST) {
             exit();
         } else {
             setcookie("user_id", $result["id"]);
+            setcookie("user_name", $result["username"]);
+            setcookie("passwd", $result["password"]);
+            setcookie("address", $result["address"]);
+            setcookie("email", $result["email"]);
+            setcookie("phone_number", $result["phone_number"]);
             create_flash_message("message", "Password is true.");
         }
 
         header("Location:".$link);
+    } elseif ($_POST["method"] == "settings") {
+        $query = $db->prepare("UPDATE users SET username = :username, password = :password, email = :email, address = :address,  phone_number=:phone_number WHERE id = 1;");
+        $query->bindParam('username', $_POST["username"]);
+        $query->bindParam('password', $_POST["password"]);
+        $query->bindParam('address', $_POST["address"]);
+        $query->bindParam('email', $_POST["email"]);
+        $query->bindParam('phone_number', $_POST["phone_number"]);
+        $query->execute();
+        //$rows = $query->fetchAll(PDO::FETCH_ASSOC);
+        //header("Location:".$link."settings.php?message=successful");
+        //exit();
+        //$result = $query->fetch(PDO::FETCH_ASSOC);
+        //error_log($result);
+        header("Location:".$link."settings.php?message=successful");
+        exit();
     } else {
         create_flash_message("message", "Select true method!");
     }
@@ -124,6 +147,10 @@ function show_flash_message($key) {
                 echo "</table>"; ?>
             <br>
             <br>
+            Do you want to change yout user settings. Just go to <a href="<?=$link?>settings.php">Settings</a> page.
+            <br>
+            <br>
+
             If you wanna exit you can <a href="<?=$link?>?logout">Logout</a>
         <?php } else { header("Location:".$link."login.php"); } ?>
         </div>
